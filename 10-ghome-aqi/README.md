@@ -32,6 +32,34 @@ Go to Fulfillment. There are 2 options to write a backend logic: using custom we
 
 ### Go
 
+### How to deploy a Go app to both the GCP App Engine Standard and Flexible Environments
+# Prerequisites
+    • You have the gcloud tool installed
+    • You have [Go](https://golang.org/doc/install) installed
+    • You have a project in [GCP](http://console.cloud.google.com/)
+
+# Let’s Get Started
+First, let’s make a directory and enter it:
+
+```mkdir ~/hello-go && cd hello-go```
+
+Now make sure we set our GOPATH to this directory:
+
+```export GOPATH=$(pwd):$GOPATH```
+
+Next, we’ll set up our project directory:
+
+```mkdir -p src/go-app && cd src/go-app```
+
+And now let’s go get the GCP App Engine library:
+
+```go get -u google.golang.org/appengine/...```
+
+Finally, we’ll set our Project ID (from GCP) as an environmental variable and configure gcloud to use it:
+
+```PROJECT_ID=<project-id>
+gcloud config set project $PROJECT_ID
+```
 I already have Google Cloud project and `gcloud` SDK installed, so I will start with writing application. I will start with `app.yaml` file to describe handlers and runtime:
 
 ```go
